@@ -8,10 +8,10 @@ COPY ./src /usr/src/Starship-Takeoff
 # Specify the working directory
 WORKDIR /usr/src/Starship-Takeoff
 
-RUN set -ex ; \
-    mkdir -p build ; \
-    cmake -S . -B ./build ; \
-    make -C ./build ;
+RUN mkdir -p build
+WORKDIR /usr/src/Starship-Takeoff/build
+RUN cmake ..
+RUN cmake --build .
 
 FROM ubuntu:latest
 

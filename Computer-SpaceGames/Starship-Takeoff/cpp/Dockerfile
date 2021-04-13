@@ -1,4 +1,4 @@
-FROM gcc:10.3
+FROM gcc:10.3 AS builder
 
 RUN apt-get update && apt-get install -y cmake
 
@@ -13,5 +13,11 @@ RUN set -ex ; \
     cmake -S . -B ./build ; \
     make -C ./build ;
 
+FROM ubuntu:latest
+
+WORKDIR /opt/Starship-Takeoff
+
+COPY --from=builder /usr/src/Starship-Takeoff/build/Test .
+
 # Run the output program from the previous step
-CMD ["./build/Test"]
+CMD ["./Test"]

@@ -27,23 +27,9 @@ int main(int argc, char const *argv[])
             std::cout << "INVALID NUMBER, TRY AGAIN" << std::endl;
             continue;
         }
-        switch(game.make_guess(guess)) {
-            case GuessResponse::TooHigh: {
-                std::cout << "TOO HIGH, TRY AGAIN" << std::endl;
-                break;
-            }
-            case GuessResponse::TooLow: {
-                std::cout << "TOO LOW, TRY AGAIN" << std::endl;
-                break;
-            }
-            case GuessResponse::TakeOff: {
-                std::cout << "GOOD TAKE OFF" << std::endl;
-                return 0;
-            }
-            case GuessResponse::GameOver: {
-                std::cout << "YOU FAILED - THE ALIENS GOT YOU" << std::endl;
-                return 0;
-            }
-        } 
+        std::cout << print_response(game.make_guess(guess)) << std::endl;
+        if (game.over()) {
+            break;
+        }
     }
 }

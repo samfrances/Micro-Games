@@ -25,8 +25,8 @@ FROM ubuntu:latest
 
 WORKDIR /opt/Starship-Takeoff
 
-COPY --from=builder /usr/src/Starship-Takeoff/build/Test .
-COPY --from=builder /usr/src/Starship-Takeoff/build/hello_test .
+COPY --from=builder /usr/src/Starship-Takeoff/build/Starship-Takeoff .
+COPY --from=builder /usr/src/Starship-Takeoff/build/tests .
 
 # Run the output program from the previous step
-CMD ["./Test"]
+CMD ["./Starship-Takeoff"]

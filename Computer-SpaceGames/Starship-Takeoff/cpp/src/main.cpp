@@ -13,9 +13,6 @@ int main(int argc, char const *argv[])
     auto gravity =  gravity_distr(eng);
     auto weight =  weight_distr(eng);
 
-    std::cout << gravity << std::endl;
-    std::cout << weight << std::endl;
-
     SpaceTakeoffGame game(gravity, weight);
 
     std::cout << "STARSHIP TAKE-OFF" << std::endl;
@@ -24,6 +21,12 @@ int main(int argc, char const *argv[])
     while (true) {
         unsigned int guess;  
         std::cin >> guess;
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+            std::cout << "INVALID NUMBER, TRY AGAIN" << std::endl;
+            continue;
+        }
         switch(game.make_guess(guess)) {
             case GuessResponse::TooHigh: {
                 std::cout << "TOO HIGH, TRY AGAIN" << std::endl;

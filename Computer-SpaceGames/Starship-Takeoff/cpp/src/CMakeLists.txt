@@ -18,15 +18,15 @@ add_executable(
 enable_testing()
 
 add_executable(
-  tests
-  test.cpp
-  game.cpp
+    tests
+    test.cpp
+    game.cpp
 )
 target_link_libraries(
-  tests
-  gtest
-  pthread
-  gtest_main
+    tests
+    gtest
+    pthread
+    gtest_main
 )
 
 include(GoogleTest)

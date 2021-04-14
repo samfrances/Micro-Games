@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(
     Starship-Takeoff
     main.cpp
+    game.cpp
 )
 
 # Testing

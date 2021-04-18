@@ -1,32 +1,32 @@
-#include <string>
 #include "game.h"
+#include <string>
 
-SpaceTakeoffGame::SpaceTakeoffGame(unsigned int gravity, unsigned int weight)
-    : gravity{ gravity },
-      weight{ weight },
-      force{ weight * gravity } {}
+SpaceTakeoffGame::SpaceTakeoffGame(const int gravity, const int weight)
+    : gravity_{ gravity },
+      weight_{ weight },
+      force_{ weight * gravity } {}
 
-GuessResponse SpaceTakeoffGame::make_guess(unsigned int guess) {
-    if (tries_remaining.value() == 0) {
+GuessResponse SpaceTakeoffGame::make_guess(const int guess) {
+    if (tries_remaining_.is_finished()) {
         over_ = true;
         return GuessResponse::GameOver;
     }
-    tries_remaining.decrement();
-    if (guess > force) {
+    tries_remaining_.decrement();
+    if (guess > force_) {
         return GuessResponse::TooHigh;
     }
-    if (guess < force) {
+    if (guess < force_) {
         return GuessResponse::TooLow;
     }
     over_ = true;
     return GuessResponse::TakeOff;
-};
+}
 
-bool SpaceTakeoffGame::over() {
+bool SpaceTakeoffGame::over() const {
     return over_;
 }
 
-CountDown::CountDown(unsigned int start): value_{ start } {}
+CountDown::CountDown(const int start): value_{ start } {}
 
 void CountDown::decrement() {
     if (value_ > 0) {
@@ -34,11 +34,11 @@ void CountDown::decrement() {
     }
 }
 
-unsigned int CountDown::value() const {
-    return value_;
+bool CountDown::is_finished() const {
+    return value_ == 0;
 }
 
-std::string print_response(GuessResponse response) {
+std::string print_response(const GuessResponse response) {
     switch(response) {
         case GuessResponse::TooHigh: {
             return "TOO HIGH, TRY AGAIN";

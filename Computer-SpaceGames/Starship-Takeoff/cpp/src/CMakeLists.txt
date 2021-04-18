@@ -12,6 +12,7 @@ add_executable(
     main.cpp
     game.cpp
 )
+target_compile_options(Starship-Takeoff PRIVATE -Wall -Wextra -Werror)
 
 # Testing
 

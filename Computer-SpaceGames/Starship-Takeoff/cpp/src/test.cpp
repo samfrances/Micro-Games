@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "game.h"
 
+#include <sstream>
+
 TEST(GameTest, Initialization) {
     SpaceTakeoffGame{5, 10};
 }
@@ -102,30 +104,38 @@ TEST(GameTest, FinishedAferGameOver) {
     EXPECT_TRUE(game.over());
 }
 
-TEST(PrintResponseTest, TooHigh) {
+TEST(StreamResponseTests, TooHigh) {
+    std::stringstream out;
+    out << GuessResponse::TooHigh;
     EXPECT_EQ(
-        print_response(GuessResponse::TooHigh),
+        out.str(),
         "TOO HIGH, TRY AGAIN"
     );
 }
 
-TEST(PrintResponseTest, TooLow) {
+TEST(StreamResponseTests, TooLow) {
+    std::stringstream out;
+    out << GuessResponse::TooLow;
     EXPECT_EQ(
-        print_response(GuessResponse::TooLow),
+        out.str(),
         "TOO LOW, TRY AGAIN"
     );
 }
 
-TEST(PrintResponseTest, TakeOff) {
+TEST(StreamResponseTests, TakeOff) {
+    std::stringstream out;
+    out << GuessResponse::TakeOff;
     EXPECT_EQ(
-        print_response(GuessResponse::TakeOff),
+        out.str(),
         "GOOD TAKE OFF"
     );
 }
 
-TEST(PrintResponseTest, GameOver) {
+TEST(StreamResponseTests, GameOver) {
+    std::stringstream out;
+    out << GuessResponse::GameOver;
     EXPECT_EQ(
-        print_response(GuessResponse::GameOver),
+        out.str(),
         "YOU FAILED - THE ALIENS GOT YOU"
     );
 }

@@ -30,6 +30,6 @@ private:
 
 };
 
-std::string print_response(GuessResponse);
+std::ostream& operator<<(std::ostream& os, const GuessResponse response);
 
 #endif

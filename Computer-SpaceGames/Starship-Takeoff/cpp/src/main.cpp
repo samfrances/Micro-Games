@@ -29,7 +29,7 @@ int main()
             std::cout << "INVALID NUMBER, TRY AGAIN" << std::endl;
             continue;
         }
-        std::cout << print_response(game.make_guess(guess)) << std::endl;
+        std::cout << game.make_guess(guess) << std::endl;
     } while (!game.over());
     return 0;
 }

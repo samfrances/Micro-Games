@@ -38,20 +38,24 @@ bool CountDown::is_finished() const {
     return value_ == 0;
 }
 
-std::string print_response(const GuessResponse response) {
+std::ostream& operator<<(std::ostream& os, const GuessResponse response) {
     switch(response) {
         case GuessResponse::TooHigh: {
-            return "TOO HIGH, TRY AGAIN";
+            os << std::string{"TOO HIGH, TRY AGAIN"};
+            break;
         }
         case GuessResponse::TooLow: {
-            return "TOO LOW, TRY AGAIN";
+            os << std::string{"TOO LOW, TRY AGAIN"};
+            break;
         }
         case GuessResponse::TakeOff: {
-            return "GOOD TAKE OFF";
+            os << std::string{"GOOD TAKE OFF"};
+            break;
         }
         default: {
-            return "YOU FAILED - THE ALIENS GOT YOU";
+            os << std::string{"YOU FAILED - THE ALIENS GOT YOU"};
+            break;
         }
     }
-    return "";
+    return os;
 }

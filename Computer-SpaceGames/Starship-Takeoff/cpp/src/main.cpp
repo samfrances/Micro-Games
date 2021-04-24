@@ -26,7 +26,7 @@ int main()
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-            std::cout << "INVALID NUMBER, TRY AGAIN" << std::endl;
+            std::cout << "INVALID GUESS, TRY AGAIN" << std::endl;
             continue;
         }
         std::cout << game.make_guess(guess) << std::endl;

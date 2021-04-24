@@ -5,6 +5,8 @@
 
 enum class GuessResponse { TooLow, TooHigh, TakeOff, GameOver };
 
+std::ostream& operator<<(std::ostream& os, const GuessResponse response);
+
 class CountDown {
 public:
     CountDown(int start);
@@ -29,7 +31,5 @@ private:
     bool over_{false};
 
 };
-
-std::ostream& operator<<(std::ostream& os, const GuessResponse response);
 
 #endif

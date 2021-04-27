@@ -21,7 +21,7 @@ int main()
               << "GRAVITY=" << gravity << "\n"
               << "TYPE IN FORCE" << std::endl;
     do {
-        int guess;
+        Guess guess;
         std::cin >> guess;
         if (std::cin.fail()) {
             std::cin.clear();

@@ -17,10 +17,27 @@ private:
     int value_;
 };
 
+class Guess final {
+public:
+    Guess() {};
+    Guess(int value);
+    void setValue(int value);
+    friend bool operator>(const Guess& guess, const int other);
+    friend bool operator<(const Guess& guess, const int other);
+    friend bool operator>=(const Guess& guess, const int other);
+    friend bool operator<=(const Guess& guess, const int other);
+    friend bool operator==(const Guess& guess, const int other);
+    friend bool operator!=(const Guess& guess, const int other);
+private:
+    int value_{1};
+};
+
+std::istream& operator>>(std::istream& is, Guess& guess);
+
 class SpaceTakeoffGame {
 public:
     SpaceTakeoffGame(int gravity, int weight);
-    GuessResponse make_guess(int guess);
+    GuessResponse make_guess(const Guess& guess);
     bool over() const;
 
 private:

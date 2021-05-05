@@ -40,19 +40,19 @@ void CountDown::decrement() {
 std::ostream& operator<<(std::ostream& os, const GuessResponse response) {
     switch(response) {
         case GuessResponse::TooHigh: {
-            os << std::string{"TOO HIGH, TRY AGAIN"};
+            os << "TOO HIGH, TRY AGAIN";
             break;
         }
         case GuessResponse::TooLow: {
-            os << std::string{"TOO LOW, TRY AGAIN"};
+            os << "TOO LOW, TRY AGAIN";
             break;
         }
         case GuessResponse::TakeOff: {
-            os << std::string{"GOOD TAKE OFF"};
+            os << "GOOD TAKE OFF";
             break;
         }
         default: {
-            os << std::string{"YOU FAILED - THE ALIENS GOT YOU"};
+            os << "YOU FAILED - THE ALIENS GOT YOU";
             break;
         }
     }

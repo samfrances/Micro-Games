@@ -11,7 +11,7 @@ class CountDown {
 public:
     CountDown(int start);
     void decrement();
-    bool is_finished() const;
+    bool is_finished() const { return value_ == 0; };
 
 private:
     int value_;

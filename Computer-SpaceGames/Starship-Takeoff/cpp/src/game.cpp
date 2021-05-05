@@ -37,10 +37,6 @@ void CountDown::decrement() {
     }
 }
 
-bool CountDown::is_finished() const {
-    return value_ == 0;
-}
-
 std::ostream& operator<<(std::ostream& os, const GuessResponse response) {
     switch(response) {
         case GuessResponse::TooHigh: {
